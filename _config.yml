@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://csw.github.com/bioruby-maf
+title: BioRuby MAF blog
+subtitle: Multiple Alignment Format support for BioRuby and bio-alignment
+author: Clayton Wheeler
 simple_search: http://google.com/search
 description:
 
@@ -16,7 +16,7 @@ description:
 date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: /atom.xml
+subscribe_rss: /bioruby-maf/atom.xml
 subscribe_email:
 # RSS feeds can list your email address if you like
 email:
@@ -26,10 +26,10 @@ email:
 # ----------------------- #
 
 # If publishing to a subdirectory as in http://site.com/project set 'root: /project'
-root: /
+root: /bioruby-maf
 permalink: /blog/:year/:month/:day/:title/
 source: source
-destination: public
+destination: public/bioruby-maf
 plugins: plugins
 code_dir: downloads/code
 category_dir: blog/categories
@@ -58,7 +58,7 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/twitter.ht
 # ----------------------- #
 
 # Github repositories
-github_user:
+github_user: csw
 github_repo_count: 0
 github_show_profile_link: true
 github_skip_forks: true
@@ -89,8 +89,8 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name:
-disqus_show_comment_count: false
+disqus_short_name: biorubymafblog
+disqus_show_comment_count: true
 
 # Google Analytics
 google_analytics_tracking_id:
