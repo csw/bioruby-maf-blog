@@ -4,4 +4,5 @@
       hyde-drafts-dir "source/_drafts"
       hyde/deploy-command "rake rsync"
       hyde/jekyll-command "rake generate"
+      hyde/use-octopress t
       )
