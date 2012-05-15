@@ -1,0 +1,68 @@
+---
+layout: post
+title: "GSoC Week 1"
+date: 2012-05-13 18:14
+comments: true
+categories:
+---
+
+This has been my first half-week of work on my Google Summer of Code
+project, and it's off to an exciting start. The first order of
+business has been to get my development environment together; since
+I've been a microbiology student instead of a programmer for the last
+year, it's taken some work. In that process, I've ended up making a
+few [open](https://github.com/michaelklishin/cucumber.el/pull/21)
+[source](https://github.com/nibrahim/Hyde/pull/6)
+[contributions](https://github.com/nibrahim/Hyde/pull/7) just to get
+my tools working the way I want. I'm running GNU Emacs 24 and trying
+to take more advantage of it than I have in the past. I'll have much
+more to say about this in a future post.
+
+I've also started working on the BioRuby unit test
+[failures](http://travis-ci.org/#!/bioruby/bioruby/jobs/1296529) under
+JRuby, as a way of familiarizing myself with the BioRuby code base as
+well as the community and its development processes. Right now, JRuby
+in 1.8 mode is showing 6 failures and 126 errors, which is hardly
+confidence-inspiring for people considering using JRuby with
+BioRuby. This is too bad, since JRuby has some definite advantages as
+a Ruby implementation. After looking into these failures, I've broken them
+down into a few categories:
+
+  * temporary file permissions problems, likely due to some sort of Travis-CI
+    environment issue
+  * a bug in JRuby's implementation of
+    [Open3.popen3](http://ruby-doc.org/stdlib-1.8.7/libdoc/open3/rdoc/Open3.html#method-c-popen3)
+    which I'm working up a bug report for
+  * an odd autoload problem I've filed
+    [JRUBY-6658](https://jira.codehaus.org/browse/JRUBY-6658) for and
+    sent an accompanying
+    [RubySpec patch](https://github.com/rubyspec/rubyspec/pull/136)
+    for
+  * a problem with libxml-jruby, which appears unmaintained, for which
+    I've submitted a
+    [BioRuby patch](https://github.com/bioruby/bioruby/pull/55) plus
+    [JRUBY-6662](http://jira.codehaus.org/browse/JRUBY-6662)
+  * and a small test case bug relating to floating point handling,
+    which I've submitted a
+    [patch](https://github.com/bioruby/bioruby/pull/54) for.
+    
+Once these are resolved, JRuby should be passing the BioRuby unit
+tests in 1.8 mode, and closer to passing in 1.9 mode. (There are a few
+extra failures under 1.9 that I haven't sorted through yet.)
+  
+I've also gotten a start on my project itself, creating the
+[bioruby-maf](https://github.com/csw/bioruby-maf) Github repository
+with a project skeleton and writing my
+[first Cucumber feature](https://github.com/csw/bioruby-maf/blob/79004f9b75c1e33f9b265a1a97241d3c9d382997/features/maf-to-fasta.feature)
+for it. This is, in fact, my first Cucumber feature ever. However, I
+did spend a few cross-country flights reading the
+[RSpec](http://pragprog.com/book/achbd/the-rspec-book) and
+[Cucumber](http://pragprog.com/book/hwcuc/the-cucumber-book) books
+last week; between that and cribbing from
+[Pjotr's code](https://github.com/pjotrp/bioruby-alignment/tree/master/features)
+I feel like I have some idea what I'm doing. Just assembling that
+feature has been useful, too, since I've had to get several of the
+existing MAF tools running on my machine. In fact, my test MAF data and
+the FASTA version of it are courtesy of
+[bx-python](https://bitbucket.org/james_taylor/bx-python/wiki/Home),
+which will be my reference implementation in many respects.
