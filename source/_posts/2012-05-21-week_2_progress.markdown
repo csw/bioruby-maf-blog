@@ -37,7 +37,7 @@ JRuby.
 
 I identified another JRuby bug,
 [JRUBY-6666](http://jira.codehaus.org/browse/JRUBY-6666), causing
-quite several unit test failures. This one affects BioRuby's code for
+several unit test failures. This one affects BioRuby's code for
 running external commands, so it would be likely to be encountered in
 production use. For this one, I also worked up a
 [patch](https://github.com/jruby/jruby/pull/173).
