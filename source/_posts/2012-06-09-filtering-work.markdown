@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "filtering-work"
+title: "Filtering work"
 date: 2012-06-09 11:46
 comments: true
 categories:
