@@ -80,7 +80,7 @@ block parsing seemed like a reasonable approach, but turned out to be
 slower than performing the two operations sequentially.
 
 [at the first block of interest]: https://github.com/csw/bioruby-maf/commit/50bbc0fdcab6906a80f00cd42bd4928aaec20403
-[Running the index scan in parallel][]: https://github.com/csw/bioruby-maf/commit/624447dd9d61f9b9b5acebfe669e10a7aae5596d
+[Running the index scan in parallel]: https://github.com/csw/bioruby-maf/commit/624447dd9d61f9b9b5acebfe669e10a7aae5596d
 
 ## JRuby and java.util.concurrent
 
