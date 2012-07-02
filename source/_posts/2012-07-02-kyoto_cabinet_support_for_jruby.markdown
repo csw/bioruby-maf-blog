@@ -92,3 +92,10 @@ is:
 Ultimately, it might be worth contacting the maintainer of the
 `kyotocabinet-ruby` gem and seeing about packaging this as a platform
 variant, to sidestep all this. For the time being, though, this works.
+
+A note on performance: I found JRuby's ObjectProxyCache to be a major
+performance bottleneck, especially for multithreaded access to Kyoto
+Cabinet. Starting JRuby with the `-Xji.objectProxyCache=false` option
+gave about a 2.5x speedup for Kyoto Cabinet searches. If the rest of
+your JRuby code works with this option (which will be the default in
+JRuby 2.0, anyway), I highly recommend using it.
