@@ -37,10 +37,12 @@ Ruby API's optional parameters. For instance, here is [DB#get][]:
 
 [DB#get]: https://github.com/csw/kyotocabinet-java/blob/c51e23a4fee077229b0ffdf4b66d323b33635704/lib/kyotocabinet.rb#L105
 
+``` ruby
     alias_method :_get, :get
     def get(key)
       ret_bytes(self._get(key.to_java_bytes))
     end
+```
 
 A few methods needed a tiny bit more work, such as `DB#set_bulk` and
 `DB#cursor_process`, but as you can see from [kyotocabinet.rb][], it
@@ -51,8 +53,10 @@ wasn't much.
 Using this and the `kyotocabinet-ruby` library interchangeably for MRI
 and JRuby support in a Bundler application is straightforward:
 
+``` ruby
     gem "kyotocabinet-ruby", "~> 1.27.1", :platforms => [:mri, :rbx]
     gem "kyotocabinet-java", "~> 0.2.0", :platforms => :jruby
+```
 
 Unfortunately, if you are developing a gem as I am with
 [bioruby-maf][], things are not quite so simple. While Bundler makes
@@ -73,15 +77,17 @@ is:
 [Gem::Specification]: http://docs.rubygems.org/read/chapter/20
 [gemspec]: https://github.com/csw/bioruby-maf/blob/eda7485e61aba4978ba16a6abcdc95b8094a722d/bio-maf.gemspec#L102
 
-      if RUBY_PLATFORM == 'java'
-        s.platform = 'java'
-      end
-      [...]
-      if RUBY_PLATFORM == 'java'
-        s.add_runtime_dependency('kyotocabinet-java', ["~> 0.2.0"])
-      else    
-        s.add_runtime_dependency('kyotocabinet-ruby', ["~> 1.27.1"])
-      end
+``` ruby
+    if RUBY_PLATFORM == 'java'
+      s.platform = 'java'
+    end
+    [...]
+    if RUBY_PLATFORM == 'java'
+      s.add_runtime_dependency('kyotocabinet-java', ["~> 0.2.0"])
+    else    
+      s.add_runtime_dependency('kyotocabinet-ruby', ["~> 1.27.1"])
+    end
+```
 
 Ultimately, it might be worth contacting the maintainer of the
 `kyotocabinet-ruby` gem and seeing about packaging this as a platform
