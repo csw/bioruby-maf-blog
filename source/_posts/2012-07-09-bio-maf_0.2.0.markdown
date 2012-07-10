@@ -1,0 +1,34 @@
+---
+layout: post
+title: "Bio-MAF 0.2.0"
+date: 2012-07-09 22:59
+comments: true
+categories:
+---
+
+I have released [bio-maf][] version 0.2.0 as a Ruby gem. The main new
+feature in this release is MAF 'tiling'; combining the alignment
+blocks covering a given genomic interval, optionally filling in gaps
+with reference sequence data, to output a single alignment block. See
+the [README][] for more details. This includes a [maf_tile(1)][]
+tool. The name of this feature, and inspiration for the
+implementation, comes from the [bx-python][] implementation.
+
+[bio-maf]: https://github.com/csw/bioruby-maf
+[README]: https://github.com/csw/bioruby-maf#tile-blocks-together-over-an-interval
+[maf_tile(1)]: http://csw.github.com/bioruby-maf/man/maf_tile.1.html
+[bx-python]: https://bitbucket.org/james_taylor/bx-python/wiki/Home
+
+This release also enables [gap removal][] in cases where removal of
+some species from an alignment block leaves a gap in all remaining sequences.
+
+[gap removal]: https://github.com/csw/bioruby-maf#remove-gaps-from-parsed-blocks
+
+Other fixes and improvements include:
+
+* [#59](https://github.com/csw/bioruby-maf/issues/59): returning
+  blocks in sorted order
+* [#56](https://github.com/csw/bioruby-maf/issues/56): avoiding a
+  race condition in parallel parsing
+* Using all available cores by default under JRuby
+
