@@ -1,0 +1,41 @@
+---
+layout: post
+title: "Bio-MAF 0.3.0"
+date: 2012-07-18 12:48
+comments: true
+categories:
+---
+
+[bio-maf][] version 0.3.0 is released. This version adds features
+including [joining][] adjacent MAF blocks when sequences that caused
+them to be split have been filtered out; [returning][]
+[bio-alignment][] objects; and [truncating][] (or 'slicing') alignment
+blocks to only cover a given genomic interval.
+
+[bio-maf]: https://github.com/csw/bioruby-maf
+[joining]: https://github.com/csw/bioruby-maf#join-blocks-after-filtering-together
+[returning]: https://github.com/csw/bioruby-maf#extract-bio-alignment-representations-of-blocks
+[bio-alignment]: https://github.com/pjotrp/bioruby-alignment
+[truncating]: https://github.com/csw/bioruby-maf#extract-alignment-blocks-truncated-to-a-given-interval
+
+For developers, this also adds a higher-level [Bio::MAF::Access][] API
+for working with directories containing indexed MAF files (or,
+alternatively, single files), providing all relevant functionality for
+indexed access in a simpler way than using the KyotoIndex and Parser
+classes directly. The [maf_tile(1)][] utility has been updated to use
+this functionality; a directory of indexed MAF files can now be
+specified, and the correct file will now be parsed as appropriate.
+
+[BIO::MAF::Access]: http://rdoc.info/github/csw/bioruby-maf/master/Bio/MAF/Access
+[maf_tile(1)]: http://csw.github.com/bioruby-maf/man/maf_tile.1.html
+
+Usage of Enumerators and blocks has also been substantially improved;
+all access methods for multiple blocks such as `Access#find`,
+`Access#slice`, `Parser#each_block` now accept a block parameter,
+which will be called for each block in turn. If no block parameter is
+given, they will all return an [Enumerator][] for the resulting
+blocks. This is how most of the Ruby standard library,
+e.g. `Array#each`, works.
+
+[Enumerator]: http://www.ruby-doc.org/core-1.9.3/Enumerator.html
+
