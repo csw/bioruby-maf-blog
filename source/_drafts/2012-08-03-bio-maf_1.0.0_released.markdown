@@ -1,0 +1,8 @@
+---
+layout: post
+title: "Bio-MAF 1.0.0 released"
+date: 2012-08-03 12:29
+comments: true
+categories:
+---
+
