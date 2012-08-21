@@ -1,0 +1,49 @@
+---
+layout: post
+title: "Bio-MAF 1.0.1"
+date: 2012-08-21 11:00
+comments: true
+categories:
+---
+
+Bio-MAF 1.0.1 is released! As described in my [last post][], this
+includes support for BGZF-compressed MAF files and a command-line
+[maf_extract(1)][] tool exposing almost all of the library's random
+access functionality in an orthogonal way from the command line. It
+also includes a substantial overhaul of the [maf_tile(1)][] tool,
+adding a `--concat` option for concatenation of several tiled
+intervals. This supports one of the original motivating use cases for
+this library, enabling alignments corresponding to a set of exons to
+be concatenated and any gaps filled from a reference sequence. The
+resulting output corresponds to their mRNA product.
+
+[last post]: http://csw.github.com/bioruby-maf/blog/2012/08/05/bgzf_and_testing/
+[maf_extract(1)]: http://csw.github.com/bioruby-maf/man/maf_extract.1.html
+[maf_tile(1)]: http://csw.github.com/bioruby-maf/man/maf_tile.1.html
+
+Several other new maf_tile options support integration into
+[Galaxy][].
+
+[Galaxy]: http://usegalaxy.org/
+
+Since my last post, I have also made substantial performance
+improvements in BGZF compression and exercised the parser and indexing
+functionality on the entire set of UCSC multiz46way MAF files. This
+led to better memory management, handling of extended-range UCSC bins
+in indexing, better logging and warning generation, index version
+validation, index error reporting, and other work to make this library
+more robust and useful.
+
+Sadly, this is the end of the Google Summer of Code. I've enjoyed
+working on Bio-MAF, getting to know the BioRuby community and
+especially my fantastic mentors, and most of all, delivering a useful
+piece of bioinformatics software. Thanks also to Google for organizing
+and funding this!
+
+While the Summer of Code is over, I plan to continue to maintain
+Bio-MAF. While the originally envisioned feature set has been
+implemented, I will at least keep it up to date with
+dependencies. And, of course, if you use this library or are
+considering it, please file Github issues (or, better yet, pull
+requests) for any bugs, problem reports, feature requests, or
+suggestions you may have.
